@@ -14,7 +14,7 @@ class UserRepository(
     suspend fun getUsers() : List<UserModel>? {
         return try {
             val response = apiManager.getUsers()
-            if (response.isSuccessful) {
+            if (response.isSuccessful && response.body() != null) {
                 Log.d(TAG,"Inside UserRepository: getUsers(): try statement: if(response.isSuccessful): pass ${response.isSuccessful}")
                 Log.d(TAG,"Inside UserRepository: getUsers(): try statement: if(response.isSuccessful): response is $response")
                 Log.d(TAG,"Inside UserRepository: getUsers(): try statement: if(response.isSuccessful): response body is ${response.body()}")
